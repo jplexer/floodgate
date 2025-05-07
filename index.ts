@@ -48,7 +48,7 @@ const app = new Elysia()
     .get("/", async ({ render, set }) => {
         set.headers['Content-Type'] = 'text/html; charset=utf-8';
         return render(
-            "Welcome",
+            "Welcome to the Bits and Bytes PDS Invite generator",
             'Please <a href="/login" class="button">Login with Discord</a> to continue.'
         );
     })
@@ -150,10 +150,10 @@ const app = new Elysia()
                 const stderr = await new Response(proc.stderr).text();
 
                 if (stderr) {
-                    console.error(`Command error: ${stderr}`);
-                    return render("Command Output", `Command executed with error: <pre>${stderr}</pre>`);
+                    console.error(`Error: ${stderr}`);
+                    return render("Error", `Command executed with error: <pre>${stderr}</pre>`);
                 }
-                return render("Command Output", `<p class="success">Command executed successfully:</p><pre>${stdout}</pre>`);
+                return render("Success!", `<p class="success">Here is your invite code:</p><pre>${stdout}</pre>`);
             } catch (e: any) {
                 console.error("Error running command:", e);
                 set.status = 500;
