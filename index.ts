@@ -172,7 +172,7 @@ const app = new Elysia()
         set.headers['Content-Type'] = 'text/html; charset=utf-8'; // Set header for error responses
         return render("System Error", '<p class="error">A critical server error occurred.</p>');
     })
-    .listen(3000);
+    .listen(3031);
 
 console.log(
     `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
